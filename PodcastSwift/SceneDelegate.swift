@@ -18,10 +18,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
-        window?.rootViewController = MainTabBarController()
+        window?.rootViewController = createTabBarController(rootViewController: MainTabBarController())
         window?.makeKeyAndVisible()
     }
-
+    fileprivate func createTabBarController(rootViewController: UITabBarController)-> UITabBarController{
+        let appearance = UITabBarAppearance()
+        appearance.configureWithDefaultBackground()
+        rootViewController.tabBar.standardAppearance = appearance
+        rootViewController.tabBar.scrollEdgeAppearance = appearance
+        return rootViewController
+    }
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.
