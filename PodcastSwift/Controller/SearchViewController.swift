@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 private let reuseIdentifier = "SearchCell"
 class SearchViewController: UITableViewController {
      // MARK: - Properties
@@ -43,6 +44,8 @@ extension SearchViewController{
  // MARK: - UISearchBarDelegate
 extension SearchViewController: UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
+        AF.request("https://itunes.apple.com/search?term=jack+johnson").responseData { response in
+            print(String(data: response.data!, encoding: .utf8))
+        }
     }
 }
