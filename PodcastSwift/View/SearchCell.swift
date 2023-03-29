@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import Kingfisher
 class SearchCell: UITableViewCell {
      // MARK: - Properties
+    var result: Podcast?{
+        didSet{ configure() }
+    }
     private let photoImageView: UIImageView = {
        let imageView = UIImageView()
         imageView.backgroundColor = .systemPurple
@@ -69,5 +73,12 @@ extension SearchCell{
             stackView.leadingAnchor.constraint(equalTo: photoImageView.trailingAnchor, constant: 4),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
+    }
+    private func configure(){
+        guard let result = self.result else { return }
+        trackName.text = result.trackName
+        trackCount.text = "\(result.trackCount ?? 0)"
+        artistName.text = result.artistName
+        photoImageView.kf.setImage(with: URL(string: result.artworkUrl600!))
     }
 }

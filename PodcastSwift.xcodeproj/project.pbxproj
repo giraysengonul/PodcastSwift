@@ -10,6 +10,7 @@
 		C45831C529D41978006B5EE6 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45831C429D41978006B5EE6 /* SearchCell.swift */; };
 		C45831D729D42C3C006B5EE6 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45831D629D42C3C006B5EE6 /* Search.swift */; };
 		C45831DA29D42CBD006B5EE6 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45831D929D42CBD006B5EE6 /* SearchService.swift */; };
+		C45831E329D44AD3006B5EE6 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C45831E229D44AD3006B5EE6 /* Kingfisher */; };
 		C482448929D1789B00C5B08F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C482448829D1789B00C5B08F /* AppDelegate.swift */; };
 		C482448B29D1789B00C5B08F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C482448A29D1789B00C5B08F /* SceneDelegate.swift */; };
 		C482449229D1789D00C5B08F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C482449129D1789D00C5B08F /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C45831E329D44AD3006B5EE6 /* Kingfisher in Frameworks */,
 				C4A35E8F29D35C3100154717 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -142,6 +144,7 @@
 			name = PodcastSwift;
 			packageProductDependencies = (
 				C4A35E8E29D35C3100154717 /* Alamofire */,
+				C45831E229D44AD3006B5EE6 /* Kingfisher */,
 			);
 			productName = PodcastSwift;
 			productReference = C482448529D1789B00C5B08F /* PodcastSwift.app */;
@@ -173,6 +176,7 @@
 			mainGroup = C482447C29D1789B00C5B08F;
 			packageReferences = (
 				C4A35E8D29D35C3100154717 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				C45831E129D44AD3006B5EE6 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = C482448629D1789B00C5B08F /* Products */;
 			projectDirPath = "";
@@ -420,6 +424,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C45831E129D44AD3006B5EE6 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		C4A35E8D29D35C3100154717 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -431,6 +443,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C45831E229D44AD3006B5EE6 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C45831E129D44AD3006B5EE6 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		C4A35E8E29D35C3100154717 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C4A35E8D29D35C3100154717 /* XCRemoteSwiftPackageReference "Alamofire" */;
