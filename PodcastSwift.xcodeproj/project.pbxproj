@@ -20,6 +20,7 @@
 		C48244C729D185F000C5B08F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48244C629D185F000C5B08F /* SearchViewController.swift */; };
 		C48244C929D185FF00C5B08F /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48244C829D185FF00C5B08F /* DownloadsViewController.swift */; };
 		C4A35E8F29D35C3100154717 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C4A35E8E29D35C3100154717 /* Alamofire */; };
+		C4DEFA9A29D4558E00BD68EC /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DEFA9929D4558E00BD68EC /* SearchViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		C48244C429D185E700C5B08F /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		C48244C629D185F000C5B08F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		C48244C829D185FF00C5B08F /* DownloadsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViewController.swift; sourceTree = "<group>"; };
+		C4DEFA9929D4558E00BD68EC /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 		C482448729D1789B00C5B08F /* PodcastSwift */ = {
 			isa = PBXGroup;
 			children = (
+				C4DEFA9829D4558000BD68EC /* ViewModel */,
 				C45831D829D42CAF006B5EE6 /* Service */,
 				C45831D529D42C2F006B5EE6 /* Model */,
 				C45831C329D4196A006B5EE6 /* View */,
@@ -124,6 +127,14 @@
 				C48244C829D185FF00C5B08F /* DownloadsViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		C4DEFA9829D4558000BD68EC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C4DEFA9929D4558E00BD68EC /* SearchViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,6 +221,7 @@
 				C48244C929D185FF00C5B08F /* DownloadsViewController.swift in Sources */,
 				C45831C529D41978006B5EE6 /* SearchCell.swift in Sources */,
 				C482448B29D1789B00C5B08F /* SceneDelegate.swift in Sources */,
+				C4DEFA9A29D4558E00BD68EC /* SearchViewModel.swift in Sources */,
 				C45831D729D42C3C006B5EE6 /* Search.swift in Sources */,
 				C48244C529D185E700C5B08F /* FavoriteViewController.swift in Sources */,
 				C482449F29D1795B00C5B08F /* MainTabBarController.swift in Sources */,
