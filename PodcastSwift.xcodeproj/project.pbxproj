@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C4319BF129D8C478003C14E7 /* EpisodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4319BF029D8C478003C14E7 /* EpisodeViewController.swift */; };
+		C4319BF329D8C565003C14E7 /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4319BF229D8C565003C14E7 /* EpisodeCell.swift */; };
 		C45831C529D41978006B5EE6 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45831C429D41978006B5EE6 /* SearchCell.swift */; };
 		C45831D729D42C3C006B5EE6 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45831D629D42C3C006B5EE6 /* Search.swift */; };
 		C45831DA29D42CBD006B5EE6 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45831D929D42CBD006B5EE6 /* SearchService.swift */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C4319BF029D8C478003C14E7 /* EpisodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeViewController.swift; sourceTree = "<group>"; };
+		C4319BF229D8C565003C14E7 /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
 		C45831C429D41978006B5EE6 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		C45831D629D42C3C006B5EE6 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		C45831D929D42CBD006B5EE6 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
@@ -57,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				C45831C429D41978006B5EE6 /* SearchCell.swift */,
+				C4319BF229D8C565003C14E7 /* EpisodeCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -125,6 +130,7 @@
 				C48244C429D185E700C5B08F /* FavoriteViewController.swift */,
 				C48244C629D185F000C5B08F /* SearchViewController.swift */,
 				C48244C829D185FF00C5B08F /* DownloadsViewController.swift */,
+				C4319BF029D8C478003C14E7 /* EpisodeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -220,9 +226,11 @@
 				C482448929D1789B00C5B08F /* AppDelegate.swift in Sources */,
 				C48244C929D185FF00C5B08F /* DownloadsViewController.swift in Sources */,
 				C45831C529D41978006B5EE6 /* SearchCell.swift in Sources */,
+				C4319BF329D8C565003C14E7 /* EpisodeCell.swift in Sources */,
 				C482448B29D1789B00C5B08F /* SceneDelegate.swift in Sources */,
 				C4DEFA9A29D4558E00BD68EC /* SearchViewModel.swift in Sources */,
 				C45831D729D42C3C006B5EE6 /* Search.swift in Sources */,
+				C4319BF129D8C478003C14E7 /* EpisodeViewController.swift in Sources */,
 				C48244C529D185E700C5B08F /* FavoriteViewController.swift in Sources */,
 				C482449F29D1795B00C5B08F /* MainTabBarController.swift in Sources */,
 			);

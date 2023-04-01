@@ -58,6 +58,11 @@ extension SearchViewController{
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return self.searchResult.count == 0 ? 80 : 0
     }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let controller = EpisodeViewController()
+        self.navigationController?.pushViewController(controller, animated: true)
+        
+    }
 }
  // MARK: - UISearchBarDelegate
 extension SearchViewController: UISearchBarDelegate{
