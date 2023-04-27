@@ -48,3 +48,9 @@ extension EpisodeViewController{
         return cell
     }
 }
+// MARK: - UITableViewDelegate
+extension EpisodeViewController{
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 130
+    }
+}
