@@ -25,6 +25,7 @@
 		C4B2F9AD29FA872600541059 /* FeedKit in Frameworks */ = {isa = PBXBuildFile; productRef = C4B2F9AC29FA872600541059 /* FeedKit */; };
 		C4B2F9AF29FA873400541059 /* EpisodeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B2F9AE29FA873400541059 /* EpisodeService.swift */; };
 		C4B2F9B329FAA22200541059 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B2F9B229FAA22200541059 /* Extension.swift */; };
+		C4B2F9B729FAABE400541059 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B2F9B629FAABE400541059 /* Episode.swift */; };
 		C4DEFA9A29D4558E00BD68EC /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DEFA9929D4558E00BD68EC /* SearchViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		C48244C829D185FF00C5B08F /* DownloadsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViewController.swift; sourceTree = "<group>"; };
 		C4B2F9AE29FA873400541059 /* EpisodeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeService.swift; sourceTree = "<group>"; };
 		C4B2F9B229FAA22200541059 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		C4B2F9B629FAABE400541059 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		C4DEFA9929D4558E00BD68EC /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				C45831D629D42C3C006B5EE6 /* Search.swift */,
+				C4B2F9B629FAABE400541059 /* Episode.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 				C4319BF129D8C478003C14E7 /* EpisodeViewController.swift in Sources */,
 				C4B2F9AF29FA873400541059 /* EpisodeService.swift in Sources */,
 				C48244C529D185E700C5B08F /* FavoriteViewController.swift in Sources */,
+				C4B2F9B729FAABE400541059 /* Episode.swift in Sources */,
 				C482449F29D1795B00C5B08F /* MainTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

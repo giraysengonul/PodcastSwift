@@ -8,6 +8,11 @@
 import UIKit
 class EpisodeCell: UITableViewCell {
      // MARK: - Properties
+    var episode: Episode?{
+        didSet{
+            configure()
+        }
+    }
     private let episodeImageView: UIImageView = {
        let imageView = UIImageView()
         imageView.customMode()
@@ -72,7 +77,10 @@ extension EpisodeCell{
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
-    
+    private func configure(){
+        guard let episode = self.episode else { return }
+        self.titleLabel.text = episode.title
+    }
     
     
 }
