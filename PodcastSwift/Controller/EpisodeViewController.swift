@@ -9,15 +9,32 @@ import UIKit
 private let reuseIdentifier = "EpisodeCell"
 class EpisodeViewController: UITableViewController {
      // MARK: - Properties
+    private var podcast: Podcast
      // MARK: - Lifecycle
+    init(podcast: Podcast) {
+        self.podcast = podcast
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        fetchData()
+    }
+}
+ // MARK: - Service
+extension EpisodeViewController{
+    fileprivate func fetchData(){
+        EpisodeService.fetchData(urlString: self.podcast.feedUrl!)
     }
 }
  // MARK: - Helpers
 extension EpisodeViewController{
     private func setup(){
+        self.navigationItem.title = podcast.trackName
         tableView.register(EpisodeCell.self, forCellReuseIdentifier: reuseIdentifier)
     }
 }
