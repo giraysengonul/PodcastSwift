@@ -17,6 +17,7 @@ class EpisodeCell: UITableViewCell {
        let imageView = UIImageView()
         imageView.customMode()
         imageView.backgroundColor  = .systemPurple
+        imageView.layer.cornerRadius = 12
         return imageView
     }()
     private let pubDateLabel: UILabel = {
@@ -64,22 +65,27 @@ extension EpisodeCell{
         NSLayoutConstraint.activate([
             episodeImageView.heightAnchor.constraint(equalToConstant: 100),
             episodeImageView.widthAnchor.constraint(equalToConstant: 100),
-            episodeImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            episodeImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             episodeImageView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
         stackView = UIStackView(arrangedSubviews: [pubDateLabel,titleLabel,decriptionLabel])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
+        stackView.spacing = 5
         addSubview(stackView)
         NSLayoutConstraint.activate([
             stackView.centerYAnchor.constraint(equalTo: episodeImageView.centerYAnchor),
             stackView.leadingAnchor.constraint(equalTo: episodeImageView.trailingAnchor, constant: 10),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor)
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -10)
         ])
     }
     private func configure(){
         guard let episode = self.episode else { return }
-        self.titleLabel.text = episode.title
+       let viewModel = EpisodeCellViewModel(episode: episode)
+        self.episodeImageView.kf.setImage(with: viewModel.profileImageUrl)
+        self.titleLabel.text = viewModel.title
+        self.decriptionLabel.text = viewModel.description
+        self.pubDateLabel.text = viewModel.pubDate
     }
     
     

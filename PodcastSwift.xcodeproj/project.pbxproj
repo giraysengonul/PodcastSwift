@@ -26,6 +26,7 @@
 		C4B2F9AF29FA873400541059 /* EpisodeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B2F9AE29FA873400541059 /* EpisodeService.swift */; };
 		C4B2F9B329FAA22200541059 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B2F9B229FAA22200541059 /* Extension.swift */; };
 		C4B2F9B729FAABE400541059 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B2F9B629FAABE400541059 /* Episode.swift */; };
+		C4B2F9B929FAB2E900541059 /* EpisodeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B2F9B829FAB2E900541059 /* EpisodeCellViewModel.swift */; };
 		C4DEFA9A29D4558E00BD68EC /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DEFA9929D4558E00BD68EC /* SearchViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		C4B2F9AE29FA873400541059 /* EpisodeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeService.swift; sourceTree = "<group>"; };
 		C4B2F9B229FAA22200541059 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		C4B2F9B629FAABE400541059 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		C4B2F9B829FAB2E900541059 /* EpisodeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCellViewModel.swift; sourceTree = "<group>"; };
 		C4DEFA9929D4558E00BD68EC /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				C4DEFA9929D4558E00BD68EC /* SearchViewModel.swift */,
+				C4B2F9B829FAB2E900541059 /* EpisodeCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 				C4DEFA9A29D4558E00BD68EC /* SearchViewModel.swift in Sources */,
 				C45831D729D42C3C006B5EE6 /* Search.swift in Sources */,
 				C4B2F9B329FAA22200541059 /* Extension.swift in Sources */,
+				C4B2F9B929FAB2E900541059 /* EpisodeCellViewModel.swift in Sources */,
 				C4319BF129D8C478003C14E7 /* EpisodeViewController.swift in Sources */,
 				C4B2F9AF29FA873400541059 /* EpisodeService.swift in Sources */,
 				C48244C529D185E700C5B08F /* FavoriteViewController.swift in Sources */,
