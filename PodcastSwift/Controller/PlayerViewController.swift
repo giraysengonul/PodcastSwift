@@ -54,6 +54,48 @@ class PlayerViewController: UIViewController {
         label.textAlignment = .center
         return label
     }()
+    private var playStackView: UIStackView!
+    private lazy var goForWardButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = .black
+        button.setImage(UIImage(systemName: "goforward.30"), for: .normal)
+        button.contentVerticalAlignment = .fill
+        button.contentHorizontalAlignment = .fill
+        return button
+    }()
+    private lazy var goPlayButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = .black
+        button.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        button.contentVerticalAlignment = .fill
+        button.contentHorizontalAlignment = .fill
+        return button
+    }()
+    private lazy var goBackWardButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = .black
+        button.setImage(UIImage(systemName: "gobackward.15"), for: .normal)
+        button.contentVerticalAlignment = .fill
+        button.contentHorizontalAlignment = .fill
+        return button
+    }()
+    private var volumeStackView: UIStackView!
+    private let volumeSliderView: UISlider = {
+       let slider = UISlider()
+        return slider
+    }()
+    private let plusImageView: UIImageView = {
+       let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "speaker.wave.3.fill")
+        imageView.tintColor = .lightGray
+        return imageView
+    }()
+    private let minusImageView: UIImageView = {
+       let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "speaker.wave.1.fill")
+        imageView.tintColor = .lightGray
+        return imageView
+    }()
      // MARK: - Lifecycle
     init(episode: Episode) {
         self.episode = episode
@@ -74,7 +116,15 @@ extension PlayerViewController{
         timerStackView = UIStackView(arrangedSubviews: [startLabel,endLabel])
         timerStackView.axis = .horizontal
         
-        mainStackView = UIStackView(arrangedSubviews: [closeButton, episodeImageView, sliderView, timerStackView, nameLabel, userLabel])
+        playStackView = UIStackView(arrangedSubviews: [UIView() ,goBackWardButton,UIView() ,goPlayButton,UIView(), goForWardButton, UIView() ])
+        playStackView.axis = .horizontal
+        playStackView.distribution = .fillEqually
+        
+        volumeStackView = UIStackView(arrangedSubviews: [minusImageView, volumeSliderView, plusImageView])
+        volumeStackView.axis = .horizontal
+        
+        
+        mainStackView = UIStackView(arrangedSubviews: [closeButton, episodeImageView, sliderView, timerStackView, nameLabel, userLabel, playStackView, volumeStackView])
         mainStackView.axis = .vertical
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -83,9 +133,11 @@ extension PlayerViewController{
         NSLayoutConstraint.activate([
             episodeImageView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
             sliderView.heightAnchor.constraint(equalToConstant: 40),
+            playStackView.heightAnchor.constraint(equalToConstant: 60),
             mainStackView.topAnchor.constraint(equalTo: view.topAnchor),
             mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
-            mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32)
+            mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
+            mainStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16)
         ])
     }
 }
