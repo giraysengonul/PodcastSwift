@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C4245ADE29FB9D0200DD8E50 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4245ADD29FB9D0200DD8E50 /* PlayerViewController.swift */; };
 		C4319BF129D8C478003C14E7 /* EpisodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4319BF029D8C478003C14E7 /* EpisodeViewController.swift */; };
 		C4319BF329D8C565003C14E7 /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4319BF229D8C565003C14E7 /* EpisodeCell.swift */; };
 		C45831C529D41978006B5EE6 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45831C429D41978006B5EE6 /* SearchCell.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C4245ADD29FB9D0200DD8E50 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		C4319BF029D8C478003C14E7 /* EpisodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeViewController.swift; sourceTree = "<group>"; };
 		C4319BF229D8C565003C14E7 /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
 		C45831C429D41978006B5EE6 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				C48244C629D185F000C5B08F /* SearchViewController.swift */,
 				C48244C829D185FF00C5B08F /* DownloadsViewController.swift */,
 				C4319BF029D8C478003C14E7 /* EpisodeViewController.swift */,
+				C4245ADD29FB9D0200DD8E50 /* PlayerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				C48244C529D185E700C5B08F /* FavoriteViewController.swift in Sources */,
 				C4B2F9B729FAABE400541059 /* Episode.swift in Sources */,
 				C482449F29D1795B00C5B08F /* MainTabBarController.swift in Sources */,
+				C4245ADE29FB9D0200DD8E50 /* PlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
