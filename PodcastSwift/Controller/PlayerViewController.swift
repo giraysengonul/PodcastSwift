@@ -64,6 +64,7 @@ class PlayerViewController: UIViewController {
         button.setImage(UIImage(systemName: "goforward.30"), for: .normal)
         button.contentVerticalAlignment = .fill
         button.contentHorizontalAlignment = .fill
+        button.addTarget(self, action: #selector(handleGoForWardButton), for: .touchUpInside)
         return button
     }()
     private lazy var goPlayButton: UIButton = {
@@ -81,11 +82,15 @@ class PlayerViewController: UIViewController {
         button.setImage(UIImage(systemName: "gobackward.15"), for: .normal)
         button.contentVerticalAlignment = .fill
         button.contentHorizontalAlignment = .fill
+        button.addTarget(self, action: #selector(handleGoBackWardButton), for: .touchUpInside)
         return button
     }()
     private var volumeStackView: UIStackView!
-    private let volumeSliderView: UISlider = {
+    private lazy var volumeSliderView: UISlider = {
        let slider = UISlider()
+        slider.maximumValue = 100
+        slider.minimumValue = 0
+        slider.addTarget(self, action: #selector(handleVolumeSliderView), for: .valueChanged)
         return slider
     }()
     private let plusImageView: UIImageView = {
@@ -113,14 +118,27 @@ class PlayerViewController: UIViewController {
         startPlay()
         configureUI()
     }
-    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        player.pause()
+    }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
  // MARK: - Selectors
 extension PlayerViewController{
+    @objc private func handleVolumeSliderView(_ sender: UISlider){
+        player.volume = sender.value
+    }
+    @objc private func handleGoBackWardButton(_ sender: UIButton){
+        updateForward(value: -15)
+    }
+    @objc private func handleGoForWardButton(_ sender: UIButton){
+       updateForward(value: 30)
+    }
     @objc private func hanleCloseButton(_ sender: UIButton){
+        player.pause()
         self.dismiss(animated: true)
     }
     @objc private func handleGoPlayButton(_ sender: UIButton){
@@ -136,12 +154,24 @@ extension PlayerViewController{
 }
  // MARK: - Helpers
 extension PlayerViewController{
+    private func updateForward(value: Int64){
+        let exampleTime = CMTime(value: value, timescale: 1)
+        let seekTime = CMTimeAdd(player.currentTime(), exampleTime)
+        player.seek(to: seekTime)
+    }
+    fileprivate func updateSlider(){
+        let currentTimeSecond = CMTimeGetSeconds(player.currentTime())
+        let durationTime = CMTimeGetSeconds(player.currentItem?.duration ?? CMTimeMake(value: 1, timescale: 1))
+        let resultSecondTime = currentTimeSecond / durationTime
+        self.sliderView.value = Float(resultSecondTime)
+    }
     fileprivate func updateTimeLabel(){
         let interval = CMTimeMake(value: 1, timescale: 2)
         player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { time in
             self.startLabel.text = time.formatString()
             let endTimeSecond = self.player.currentItem?.duration
             self.endLabel.text = endTimeSecond?.formatString()
+            self.updateSlider()
         }
         
     }
@@ -152,6 +182,7 @@ extension PlayerViewController{
         player.replaceCurrentItem(with: playerItem)
         player.play()
         self.goPlayButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+        self.volumeSliderView.value = 40
         updateTimeLabel()
     }
     
