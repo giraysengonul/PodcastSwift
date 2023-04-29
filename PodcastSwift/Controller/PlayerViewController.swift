@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVKit
 class PlayerViewController: UIViewController {
      // MARK: - Propeties
     var episode: Episode
@@ -13,6 +14,7 @@ class PlayerViewController: UIViewController {
     private lazy var closeButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "chevron.compact.down"), for: .normal)
+        button.addTarget(self, action: #selector(hanleCloseButton), for: .touchUpInside)
         button.heightAnchor.constraint(equalToConstant: 40).isActive = true
         return button
     }()
@@ -67,6 +69,7 @@ class PlayerViewController: UIViewController {
         let button = UIButton(type: .system)
         button.tintColor = .black
         button.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        button.addTarget(self, action: #selector(handleGoPlayButton), for: .touchUpInside)
         button.contentVerticalAlignment = .fill
         button.contentHorizontalAlignment = .fill
         return button
@@ -96,25 +99,59 @@ class PlayerViewController: UIViewController {
         imageView.tintColor = .lightGray
         return imageView
     }()
+    private let player: AVPlayer = {
+       let player = AVPlayer()
+        return player
+    }()
      // MARK: - Lifecycle
     init(episode: Episode) {
         self.episode = episode
         super.init(nibName: nil, bundle: nil)
         style()
         layout()
+        startPlay()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
+ // MARK: - Selectors
+extension PlayerViewController{
+    @objc private func hanleCloseButton(_ sender: UIButton){
+        self.dismiss(animated: true)
+    }
+    @objc private func handleGoPlayButton(_ sender: UIButton){
+        if player.timeControlStatus == .paused{
+            player.play()
+            self.goPlayButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+        }else{
+            player.pause()
+            self.goPlayButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        }
+        
+    }
+}
  // MARK: - Helpers
 extension PlayerViewController{
+    
+    private func startPlay(){
+        guard let url = URL(string: episode.streamUrl) else { return }
+        let playerItem = AVPlayerItem(url: url)
+        player.replaceCurrentItem(with: playerItem)
+        player.play()
+        self.goPlayButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+    }
+    
+    
     private func style(){
         view.backgroundColor = .white
         
         timerStackView = UIStackView(arrangedSubviews: [startLabel,endLabel])
         timerStackView.axis = .horizontal
+        
+        let fullTimerStackView = UIStackView(arrangedSubviews: [sliderView, timerStackView])
+        fullTimerStackView.axis = .vertical
         
         playStackView = UIStackView(arrangedSubviews: [UIView() ,goBackWardButton,UIView() ,goPlayButton,UIView(), goForWardButton, UIView() ])
         playStackView.axis = .horizontal
@@ -124,8 +161,9 @@ extension PlayerViewController{
         volumeStackView.axis = .horizontal
         
         
-        mainStackView = UIStackView(arrangedSubviews: [closeButton, episodeImageView, sliderView, timerStackView, nameLabel, userLabel, playStackView, volumeStackView])
+        mainStackView = UIStackView(arrangedSubviews: [closeButton, episodeImageView,fullTimerStackView, UIView(),nameLabel, userLabel, UIView(), playStackView, volumeStackView])
         mainStackView.axis = .vertical
+        mainStackView.distribution = .equalSpacing
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
     }
     private func layout(){
@@ -137,7 +175,7 @@ extension PlayerViewController{
             mainStackView.topAnchor.constraint(equalTo: view.topAnchor),
             mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
             mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
-            mainStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16)
+            mainStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -32)
         ])
     }
 }
