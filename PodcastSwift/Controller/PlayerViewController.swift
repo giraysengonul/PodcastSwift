@@ -22,6 +22,7 @@ class PlayerViewController: UIViewController {
        let imageView = UIImageView()
         imageView.customMode()
         imageView.backgroundColor = .systemPurple
+        imageView.layer.cornerRadius = 12
         return imageView
     }()
     private let sliderView: UISlider = {
@@ -31,13 +32,13 @@ class PlayerViewController: UIViewController {
     }()
     private let startLabel: UILabel = {
        let label = UILabel()
-        label.text = "00:00"
+        label.text = "00 : 00"
         label.textAlignment = .left
         return label
     }()
     private let endLabel: UILabel = {
        let label = UILabel()
-        label.text = "00:00"
+        label.text = "00 : 00"
         label.textAlignment = .right
         return label
     }()
@@ -110,6 +111,7 @@ class PlayerViewController: UIViewController {
         style()
         layout()
         startPlay()
+        configureUI()
     }
     
     required init?(coder: NSCoder) {
@@ -134,6 +136,15 @@ extension PlayerViewController{
 }
  // MARK: - Helpers
 extension PlayerViewController{
+    fileprivate func updateTimeLabel(){
+        let interval = CMTimeMake(value: 1, timescale: 2)
+        player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { time in
+            self.startLabel.text = time.formatString()
+            let endTimeSecond = self.player.currentItem?.duration
+            self.endLabel.text = endTimeSecond?.formatString()
+        }
+        
+    }
     
     private func startPlay(){
         guard let url = URL(string: episode.streamUrl) else { return }
@@ -141,6 +152,7 @@ extension PlayerViewController{
         player.replaceCurrentItem(with: playerItem)
         player.play()
         self.goPlayButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+        updateTimeLabel()
     }
     
     
@@ -177,5 +189,10 @@ extension PlayerViewController{
             mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
             mainStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -32)
         ])
+    }
+    private func configureUI(){
+        self.episodeImageView.kf.setImage(with: URL(string: episode.imageUrl))
+        self.nameLabel.text = episode.title
+        self.userLabel.text = episode.author
     }
 }
