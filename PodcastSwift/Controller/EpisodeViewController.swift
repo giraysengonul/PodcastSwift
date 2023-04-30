@@ -40,11 +40,19 @@ extension EpisodeViewController{
         }
     }
 }
+ // MARK: - Selectors
+extension EpisodeViewController{
+    @objc private func handleFavoriButton(){
+        print("Favori Add")
+    }
+}
  // MARK: - Helpers
 extension EpisodeViewController{
     private func setup(){
         self.navigationItem.title = podcast.trackName
         tableView.register(EpisodeCell.self, forCellReuseIdentifier: reuseIdentifier)
+        let navRightItem = UIBarButtonItem(title: "Favori", style: .done, target: self, action: #selector(handleFavoriButton))
+        self.navigationItem.rightBarButtonItems = [navRightItem]
     }
 }
  // MARK: - UITableViewDataSource

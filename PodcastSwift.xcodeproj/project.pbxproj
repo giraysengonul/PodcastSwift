@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C407CE0D29FE6A2500756E7F /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C407CE0C29FE6A2500756E7F /* FavoriteCell.swift */; };
+		C407CE1329FE788300756E7F /* PodcastSwift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C407CE1129FE788300756E7F /* PodcastSwift.xcdatamodeld */; };
 		C4245ADE29FB9D0200DD8E50 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4245ADD29FB9D0200DD8E50 /* PlayerViewController.swift */; };
 		C4319BF129D8C478003C14E7 /* EpisodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4319BF029D8C478003C14E7 /* EpisodeViewController.swift */; };
 		C4319BF329D8C565003C14E7 /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4319BF229D8C565003C14E7 /* EpisodeCell.swift */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		C407CE0C29FE6A2500756E7F /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
+		C407CE1229FE788300756E7F /* PodcastSwift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PodcastSwift.xcdatamodel; sourceTree = "<group>"; };
 		C4245ADD29FB9D0200DD8E50 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		C4319BF029D8C478003C14E7 /* EpisodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeViewController.swift; sourceTree = "<group>"; };
 		C4319BF229D8C565003C14E7 /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				C482449129D1789D00C5B08F /* Assets.xcassets */,
 				C482449329D1789D00C5B08F /* LaunchScreen.storyboard */,
 				C482449629D1789D00C5B08F /* Info.plist */,
+				C407CE1129FE788300756E7F /* PodcastSwift.xcdatamodeld */,
 			);
 			name = Files;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				C4B2F9B729FAABE400541059 /* Episode.swift in Sources */,
 				C407CE0D29FE6A2500756E7F /* FavoriteCell.swift in Sources */,
 				C482449F29D1795B00C5B08F /* MainTabBarController.swift in Sources */,
+				C407CE1329FE788300756E7F /* PodcastSwift.xcdatamodeld in Sources */,
 				C4245ADE29FB9D0200DD8E50 /* PlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -523,6 +527,19 @@
 			productName = FeedKit;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		C407CE1129FE788300756E7F /* PodcastSwift.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C407CE1229FE788300756E7F /* PodcastSwift.xcdatamodel */,
+			);
+			currentVersion = C407CE1229FE788300756E7F /* PodcastSwift.xcdatamodel */;
+			path = PodcastSwift.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C482447D29D1789B00C5B08F /* Project object */;
 }
