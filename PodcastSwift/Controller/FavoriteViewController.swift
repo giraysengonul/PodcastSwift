@@ -55,6 +55,15 @@ extension FavoriteViewController{
         return cell
     }
 }
+ // MARK: - UICollectionViewDelegate
+extension FavoriteViewController{
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let podcastCoreData = self.resultCoreDataItems[indexPath.item]
+        let podcast = Podcast(trackName: podcastCoreData.trackName, artistName: podcastCoreData.artistName!,artworkUrl600: podcastCoreData.artworkUrl600,feedUrl: podcastCoreData.feedUrl)
+        let controller = EpisodeViewController(podcast: podcast)
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+}
  // MARK: - UICollectionViewDelegateFlowLayout
 extension FavoriteViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

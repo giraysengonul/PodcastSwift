@@ -21,6 +21,7 @@ struct CoreDataController {
     static func deleteCoreData(array: [PodcastCoreData], podcast: Podcast){
         let value = array.filter({$0.feedUrl == podcast.feedUrl})
         context.delete(value.first!)
+        appDelegate.saveContext()
     }
     static func fetchCoreData(fetchRequest: NSFetchRequest<PodcastCoreData>, completion: @escaping([PodcastCoreData])->Void){
         do{
