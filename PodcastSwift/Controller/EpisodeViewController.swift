@@ -7,12 +7,29 @@
 
 import UIKit
 private let reuseIdentifier = "EpisodeCell"
+private let appDelegate = UIApplication.shared.delegate as! AppDelegate
 class EpisodeViewController: UITableViewController {
      // MARK: - Properties
+    private let context = appDelegate.persistentContainer.viewContext
     private var podcast: Podcast
     private var episodeResult: [Episode] = []{
         didSet{
             self.tableView.reloadData()
+        }
+    }
+    private var isFavorite = false{
+        didSet{
+            setupNavBarItem()
+        }
+    }
+    private var resultCoreDataItems: [PodcastCoreData] = []{
+        didSet{
+            let isValue = resultCoreDataItems.contains(where: {$0.feedUrl == self.podcast.feedUrl})
+            if isValue{
+                isFavorite = true
+            }else{
+                isFavorite = false
+            }
         }
     }
      // MARK: - Lifecycle
@@ -43,16 +60,53 @@ extension EpisodeViewController{
  // MARK: - Selectors
 extension EpisodeViewController{
     @objc private func handleFavoriButton(){
-        print("Favori Add")
+        if isFavorite{
+            deleteCoreData()
+        }else{
+            addCoreData()
+        }
     }
 }
  // MARK: - Helpers
 extension EpisodeViewController{
+    private func deleteCoreData(){
+        let value = resultCoreDataItems.filter({$0.feedUrl == self.podcast.feedUrl})
+        context.delete(value.first!)
+        self.isFavorite = false
+    }
+    private func addCoreData(){
+        let model = PodcastCoreData(context: context)
+        model.feedUrl = self.podcast.feedUrl
+        model.artworkUrl600 = self.podcast.artworkUrl600
+        model.artistName = self.podcast.artistName
+        model.trackName = self.podcast.trackName
+        appDelegate.saveContext()
+        isFavorite = true
+    }
+    private func fetchCoreData(){
+        let fetchRequest = PodcastCoreData.fetchRequest()
+        do{
+            let result = try context.fetch(fetchRequest)
+            self.resultCoreDataItems = result
+        }catch{
+            
+        }
+        
+    }
+    private func setupNavBarItem(){
+        if isFavorite{
+            let navRightItem = UIBarButtonItem(image: UIImage(systemName: "heart.fill")?.withTintColor(.systemPink, renderingMode: .alwaysOriginal), style: .done, target: self, action: #selector(handleFavoriButton))
+            self.navigationItem.rightBarButtonItem = navRightItem
+        }else{
+            let navRightItem = UIBarButtonItem(image: UIImage(systemName: "heart")?.withTintColor(.systemPink, renderingMode: .alwaysOriginal), style: .done, target: self, action: #selector(handleFavoriButton))
+            self.navigationItem.rightBarButtonItem = navRightItem
+        }
+    }
     private func setup(){
         self.navigationItem.title = podcast.trackName
         tableView.register(EpisodeCell.self, forCellReuseIdentifier: reuseIdentifier)
-        let navRightItem = UIBarButtonItem(title: "Favori", style: .done, target: self, action: #selector(handleFavoriButton))
-        self.navigationItem.rightBarButtonItems = [navRightItem]
+        setupNavBarItem()
+        fetchCoreData()
     }
 }
  // MARK: - UITableViewDataSource
