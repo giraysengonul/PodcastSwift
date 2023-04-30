@@ -6,21 +6,51 @@
 //
 
 import UIKit
-class FavoriteViewController: UIViewController {
+private let reuseIdentifier = "FavoriteCell"
+class FavoriteViewController: UICollectionViewController {
      // MARK: - Properties
      // MARK: - Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        style()
-        layout()
+     init() {
+         let flowLayout = UICollectionViewFlowLayout()
+        super.init(collectionViewLayout: flowLayout)
+         setup()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
  // MARK: - Helpers
 extension FavoriteViewController{
-    private func style(){
-        view.backgroundColor = .blue
-    }
-    private func layout(){
+    private func setup(){
+        view.backgroundColor = .white
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
+    }
+}
+ // MARK: - UICollectionViewDataSource
+extension FavoriteViewController{
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        cell.backgroundColor = .blue
+        return cell
+    }
+}
+ // MARK: - UICollectionViewDelegateFlowLayout
+extension FavoriteViewController: UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return .init(width: (view.frame.width - 30) / 2, height: 180)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return .init(top: 10, left: 10, bottom: 10, right: 10)
     }
 }
