@@ -19,6 +19,12 @@ class FavoriteViewController: UICollectionViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let window = UIApplication.shared.connectedScenes.first as! UIWindowScene
+        let mainTabController = window.keyWindow?.rootViewController as! MainTabBarController
+        mainTabController.viewControllers?[0].tabBarItem.badgeValue = nil
+    }
 }
  // MARK: - Helpers
 extension FavoriteViewController{

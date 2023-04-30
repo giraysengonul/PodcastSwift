@@ -70,26 +70,21 @@ extension EpisodeViewController{
  // MARK: - Helpers
 extension EpisodeViewController{
     private func deleteCoreData(){
-        let value = resultCoreDataItems.filter({$0.feedUrl == self.podcast.feedUrl})
-        context.delete(value.first!)
+        CoreDataController.deleteCoreData(array: resultCoreDataItems, podcast: self.podcast)
         self.isFavorite = false
     }
     private func addCoreData(){
         let model = PodcastCoreData(context: context)
-        model.feedUrl = self.podcast.feedUrl
-        model.artworkUrl600 = self.podcast.artworkUrl600
-        model.artistName = self.podcast.artistName
-        model.trackName = self.podcast.trackName
-        appDelegate.saveContext()
+        CoreDataController.addCoreData(model: model, podcast: self.podcast)
         isFavorite = true
+        let window = UIApplication.shared.connectedScenes.first as! UIWindowScene
+        let mainTabController = window.keyWindow?.rootViewController as! MainTabBarController
+        mainTabController.viewControllers?[0].tabBarItem.badgeValue = "New"
     }
     private func fetchCoreData(){
         let fetchRequest = PodcastCoreData.fetchRequest()
-        do{
-            let result = try context.fetch(fetchRequest)
+        CoreDataController.fetchCoreData(fetchRequest: fetchRequest) { result in
             self.resultCoreDataItems = result
-        }catch{
-            
         }
         
     }
