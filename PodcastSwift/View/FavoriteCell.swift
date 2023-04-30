@@ -8,6 +8,9 @@
 import UIKit
 class FavoriteCell: UICollectionViewCell {
      // MARK: - Properties
+    var podcastCoreData: PodcastCoreData?{
+        didSet{ configure() }
+    }
     private let podcastImageView: UIImageView = {
        let imageView = UIImageView()
         imageView.customMode()
@@ -58,5 +61,12 @@ extension FavoriteCell{
             fullStackView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
         
+    }
+    private func configure(){
+        guard let podcastCoreData = self.podcastCoreData else { return }
+        let viewModel = FavoriteCellViewModel(podcastCoreData: podcastCoreData)
+        self.podcastImageView.kf.setImage(with: viewModel.imageUrlPodcast)
+        self.podcastNameLabel.text = viewModel.podcastNameLabel
+        self.podcastArtistNameLabel.text = viewModel.podcastArtistName
     }
 }

@@ -8,8 +8,8 @@
 import Foundation
 import CoreData
 import UIKit
-private let appDelegate = UIApplication.shared.delegate as! AppDelegate
-private let context = appDelegate.persistentContainer.viewContext
+ let appDelegate = UIApplication.shared.delegate as! AppDelegate
+ let context = appDelegate.persistentContainer.viewContext
 struct CoreDataController {
     static func addCoreData(model: PodcastCoreData, podcast: Podcast){
         model.feedUrl = podcast.feedUrl

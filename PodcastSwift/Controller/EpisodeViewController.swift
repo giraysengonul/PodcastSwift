@@ -7,10 +7,10 @@
 
 import UIKit
 private let reuseIdentifier = "EpisodeCell"
-private let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
 class EpisodeViewController: UITableViewController {
      // MARK: - Properties
-    private let context = appDelegate.persistentContainer.viewContext
+   
     private var podcast: Podcast
     private var episodeResult: [Episode] = []{
         didSet{

@@ -9,6 +9,9 @@ import UIKit
 private let reuseIdentifier = "FavoriteCell"
 class FavoriteViewController: UICollectionViewController {
      // MARK: - Properties
+    private var resultCoreDataItems: [PodcastCoreData] = []{
+        didSet{ collectionView.reloadData() }
+    }
      // MARK: - Lifecycle
      init() {
          let flowLayout = UICollectionViewFlowLayout()
@@ -24,10 +27,17 @@ class FavoriteViewController: UICollectionViewController {
         let window = UIApplication.shared.connectedScenes.first as! UIWindowScene
         let mainTabController = window.keyWindow?.rootViewController as! MainTabBarController
         mainTabController.viewControllers?[0].tabBarItem.badgeValue = nil
+        fetchData()
     }
 }
  // MARK: - Helpers
 extension FavoriteViewController{
+    private func fetchData(){
+        let fetchRequest = PodcastCoreData.fetchRequest()
+        CoreDataController.fetchCoreData(fetchRequest: fetchRequest) { result in
+            self.resultCoreDataItems = result
+        }
+    }
     private func setup(){
         view.backgroundColor = .white
         collectionView.register(FavoriteCell.self, forCellWithReuseIdentifier: reuseIdentifier)
@@ -37,10 +47,11 @@ extension FavoriteViewController{
  // MARK: - UICollectionViewDataSource
 extension FavoriteViewController{
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return self.resultCoreDataItems.count
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FavoriteCell
+        cell.podcastCoreData = self.resultCoreDataItems[indexPath.item]
         return cell
     }
 }
