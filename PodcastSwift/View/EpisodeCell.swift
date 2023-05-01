@@ -13,6 +13,16 @@ class EpisodeCell: UITableViewCell {
             configure()
         }
     }
+     var progressView: UIProgressView = {
+        let progressView = UIProgressView(progressViewStyle: .default)
+        progressView.trackTintColor = .lightGray
+        progressView.tintColor = .systemPurple
+        progressView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        progressView.layer.cornerRadius = 12
+        progressView.setProgress(Float(0), animated: true)
+        progressView.isHidden = true
+        return progressView
+    }()
     private let episodeImageView: UIImageView = {
        let imageView = UIImageView()
         imageView.customMode()
@@ -61,12 +71,19 @@ extension EpisodeCell{
     }
     private func configureUI(){
         episodeImageView.translatesAutoresizingMaskIntoConstraints = false
+        progressView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(episodeImageView)
+        addSubview(progressView)
         NSLayoutConstraint.activate([
             episodeImageView.heightAnchor.constraint(equalToConstant: 100),
             episodeImageView.widthAnchor.constraint(equalToConstant: 100),
             episodeImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            episodeImageView.centerYAnchor.constraint(equalTo: centerYAnchor)
+            episodeImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            
+            progressView.heightAnchor.constraint(equalToConstant: 20),
+            progressView.leadingAnchor.constraint(equalTo: episodeImageView.leadingAnchor),
+            progressView.trailingAnchor.constraint(equalTo: episodeImageView.trailingAnchor),
+            progressView.bottomAnchor.constraint(equalTo: episodeImageView.bottomAnchor),
         ])
         stackView = UIStackView(arrangedSubviews: [pubDateLabel,titleLabel,decriptionLabel])
         stackView.translatesAutoresizingMaskIntoConstraints = false

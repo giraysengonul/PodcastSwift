@@ -36,7 +36,8 @@ struct EpisodeService {
     static func downloadEpisode(episode: Episode){
         let downloadrequest = DownloadRequest.suggestedDownloadDestination()
         AF.download(episode.streamUrl, to: downloadrequest).downloadProgress { progress in
-            
+            let progressValue = progress.fractionCompleted
+            NotificationCenter.default.post(name: .downloadNotificationName, object: nil,userInfo: ["title": episode.title, "progress": progressValue])
         }.response { response in
             
             var downloadEpisodeResponse = UserDefaults.downloadEpisodeRead()
