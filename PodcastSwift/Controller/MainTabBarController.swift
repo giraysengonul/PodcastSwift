@@ -20,6 +20,7 @@ extension MainTabBarController{
             createViewController(rootViewController: SearchViewController(), title: "Search", imagename: "magnifyingglass"),
             createViewController(rootViewController: DownloadsViewController(), title: "Downloads", imagename: "square.stack.fill")
         ]
+        tabBar.tintColor = .systemPurple
     }
     private func createViewController(rootViewController: UIViewController, title: String, imagename: String) -> UINavigationController{
         rootViewController.title = title

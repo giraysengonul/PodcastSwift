@@ -20,6 +20,9 @@ class DownloadsViewController: UITableViewController {
         super.viewWillAppear(animated)
         self.episodeResult = UserDefaults.downloadEpisodeRead()
         tableView.reloadData()
+        let window = UIApplication.shared.connectedScenes.first as! UIWindowScene
+        let mainTabController = window.keyWindow?.rootViewController as! MainTabBarController
+        mainTabController.viewControllers?[2].tabBarItem.badgeValue = nil
     }
 }
  // MARK: - Selectors

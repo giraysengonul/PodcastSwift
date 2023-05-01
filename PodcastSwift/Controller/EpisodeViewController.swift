@@ -129,6 +129,9 @@ extension EpisodeViewController{
         let downloadAction = UIContextualAction(style: .destructive, title: "Download") { action, view, completion in
             UserDefaults.downloadEpisodeWrite(episode: self.episodeResult[indexPath.item])
             EpisodeService.downloadEpisode(episode: self.episodeResult[indexPath.item])
+            let window = UIApplication.shared.connectedScenes.first as! UIWindowScene
+            let mainTabController = window.keyWindow?.rootViewController as! MainTabBarController
+            mainTabController.viewControllers?[2].tabBarItem.badgeValue = "New"
             completion(true)
         }
         
